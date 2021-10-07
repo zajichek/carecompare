@@ -1,0 +1,24 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+<!-- badges: start -->
+[![CRAN Status](https://www.r-pkg.org/badges/version/carecompare)](https://cran.r-project.org/package=carecompare)
+![CRAN\_Download\_Counter](http://cranlogs.r-pkg.org/badges/grand-total/carecompare)
+<!-- badges: end -->
+
+# Introduction
+The `carecompare` package contains tools for accessing, exploring and analyzing the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/)
+
+*__Currently in development__*

@@ -1,0 +1,18 @@
+Package: carecompare
+Version: 0.0.1
+Date: 2021-10-06
+Title: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
+Authors@R: person(given = "Alex", family = "Zajichek", email = "alexzajichek@gmail.com", role = c("aut", "cre"))
+Description: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
+URL: https://zajichek.github.io/carecompare, https://github.com/zajichek/carecompare
+License: MIT + file LICENSE
+Depends: 
+    R (>= 3.4.0)
+Imports:
+    dplyr (>= 0.8.2),
+    magrittr (>= 1.5)
+Suggests:
+    rmarkdown (>= 1.10)
+VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true

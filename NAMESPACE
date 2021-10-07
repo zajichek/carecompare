@@ -1,0 +1,5 @@
+importFrom("magrittr", "%>%")
+importFrom("rlang", ".data")
+importFrom("tibble", "tibble")
+
+export("%>%")
