@@ -1,3 +1,12 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^Meta$
+^doc$
+^README\.Rmd$
+^README\.md$
+^data-raw$
+^LICENSE\.md$
+^README-.*\.jpg$
+^\.Rhistory$
+^NEWS\.md$
