@@ -13,12 +13,35 @@ knitr::opts_chunk$set(
 )
 ```
 
+# <img src="man/figures/carecompare.png" width="200" />
+
 <!-- badges: start -->
 [![CRAN Status](https://www.r-pkg.org/badges/version/carecompare)](https://cran.r-project.org/package=carecompare)
 ![CRAN\_Download\_Counter](http://cranlogs.r-pkg.org/badges/grand-total/carecompare)
 <!-- badges: end -->
 
+*__Currently in development__*
+
 # Introduction
 The `carecompare` package contains tools for accessing, exploring and analyzing the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/)
 
-*__Currently in development__*
+```{r}
+# Load the package
+require(carecompare)
+
+# Extract the topics
+topics <- topics()
+topics
+
+# Examine the metadata for a given topic
+hospitals <- datasets("Hospitals")
+hospitals %>% 
+  head() %>%
+  knitr::kable(format = "pandoc")
+
+# Import the data for a given dataset
+read_cms(
+  datasetid = "ynj2-r877"
+)
+```
+

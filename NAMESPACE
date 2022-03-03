@@ -2,4 +2,7 @@ importFrom("magrittr", "%>%")
 importFrom("rlang", ".data")
 importFrom("tibble", "tibble")
 
-export("%>%")
+export("%>%",
+       "topics",
+       "datasets",
+       "read_cms")

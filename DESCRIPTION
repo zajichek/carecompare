@@ -1,6 +1,6 @@
 Package: carecompare
 Version: 0.0.1
-Date: 2021-10-06
+Date: 2022-03-02
 Title: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
 Authors@R: person(given = "Alex", family = "Zajichek", email = "alexzajichek@gmail.com", role = c("aut", "cre"))
 Description: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
@@ -9,8 +9,10 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.4.0)
 Imports:
-    dplyr (>= 0.8.2),
-    magrittr (>= 1.5)
+    dplyr (>= 1.0.0),
+    httr (>= 1.0.0),
+    magrittr (>= 1.5),
+    readr (>= 1.0.0)
 Suggests:
     rmarkdown (>= 1.10)
 VignetteBuilder: knitr

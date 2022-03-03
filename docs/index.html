@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">carecompare</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -52,7 +48,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/zajichek/carecompare/">
+  <a href="https://github.com/zajichek/carecompare/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -70,55 +66,205 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
+<div class="section level1">
+<div class="page-header"><h1 id="section">
+<img src="reference/figures/carecompare.png" width="200"><a class="anchor" aria-label="anchor" href="#section"></a>
+</h1></div>
+<!-- badges: start -->
 
-<div id="introduction" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1></div>
-<p>The <code>carecompare</code> package contains tools for accessing, exploring and analyzing the <a href="https://data.cms.gov/provider-data/">CMS Provider Data Catalog</a></p>
 <p><strong><em>Currently in development</em></strong></p>
+</div>
+<div class="section level1">
+<h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h1>
+<p>The <code>carecompare</code> package contains tools for accessing, exploring and analyzing the <a href="https://data.cms.gov/provider-data/" class="external-link">CMS Provider Data Catalog</a></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Load the package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://zajichek.github.io/carecompare" class="external-link">carecompare</a></span><span class="op">)</span>
+<span class="co">#&gt; Loading required package: carecompare</span>
+
+<span class="co"># Extract the topics</span>
+<span class="va">topics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/topics.html">topics</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">topics</span>
+<span class="co">#&gt;  [1] "Helpful Contacts"                      </span>
+<span class="co">#&gt;  [2] "Dialysis facilities"                   </span>
+<span class="co">#&gt;  [3] "Home health services"                  </span>
+<span class="co">#&gt;  [4] "Hospice care"                          </span>
+<span class="co">#&gt;  [5] "Hospitals"                             </span>
+<span class="co">#&gt;  [6] "Inpatient rehabilitation facilities"   </span>
+<span class="co">#&gt;  [7] "Long-term care hospitals"              </span>
+<span class="co">#&gt;  [8] "Nursing homes including rehab services"</span>
+<span class="co">#&gt;  [9] "Physician office visit costs"          </span>
+<span class="co">#&gt; [10] "Doctors and clinicians"                </span>
+<span class="co">#&gt; [11] "Supplier directory"                    </span>
+<span class="co">#&gt; [12] "Medicare plan finder"</span>
+
+<span class="co"># Examine the metadata for a given topic</span>
+<span class="va">hospitals</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datasets.html">datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
+<span class="va">hospitals</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"pandoc"</span><span class="op">)</span></code></pre></div>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="1%">
+<col width="1%">
+<col width="7%">
+<col width="71%">
+<col width="1%">
+<col width="1%">
+<col width="15%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">datasetid</th>
+<th align="left">topic</th>
+<th align="left">title</th>
+<th align="left">description</th>
+<th align="left">issued</th>
+<th align="left">modified</th>
+<th align="left">downloadurl</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">4jcv-atw7</td>
+<td align="left">Hospitals</td>
+<td align="left">Ambulatory Surgical Center Quality Measures - Facility</td>
+<td align="left">A list of ambulatory surgical centers participating in the Ambulatory Surgical Center Quality Reporting (ASCQR) Program and their performance rates for calendar years 2019 and 2020.</td>
+<td align="left">2022-01-07</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/9f2d12e524d9ab36a0046ce25d6ac22a_1641873914/ASC_Facility.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/9f2d12e524d9ab36a0046ce25d6ac22a_1641873914/ASC_Facility.csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">axe7-s95e</td>
+<td align="left">Hospitals</td>
+<td align="left">Ambulatory Surgical Center Quality Measures - State</td>
+<td align="left">This file contains state-level data for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.</td>
+<td align="left">2022-01-07</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/8fcad48fb47852d29549b98e93b9b178_1641873917/ASC_State.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/8fcad48fb47852d29549b98e93b9b178_1641873917/ASC_State.csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">wue8-3vwe</td>
+<td align="left">Hospitals</td>
+<td align="left">Ambulatory Surgical Center Quality Measures - National</td>
+<td align="left">This file contains the national averages for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.</td>
+<td align="left">2022-01-07</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/eeab0bd6ff1f6704bd1febeeb7281b5f_1641873915/ASC_National.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/eeab0bd6ff1f6704bd1febeeb7281b5f_1641873915/ASC_National.csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">muwa-iene</td>
+<td align="left">Hospitals</td>
+<td align="left">CMS Medicare PSI-90 and component measures - six-digit estimate dataset</td>
+<td align="left">This data set includes the Patient Safety and Adverse Events Composite measure (CMS Medicare PSI 90) and the individual CMS Patient Safety Indicators. CMS Medicare PSI 90 is a composite complication measure composed from 10 separate Patient Safety Indicators. The measure provides an overview of hospital-level quality as it relates to a set of potentially preventable hospital-related events associated with harmful outcomes for patients. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
+<td align="left">2020-12-10</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/06f0a6eff78f06b8bee4b4bf4a1f20a2_1641873919/CMS_PSI_6_decimal_file.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/06f0a6eff78f06b8bee4b4bf4a1f20a2_1641873919/CMS_PSI_6_decimal_file.csv</a></td>
+</tr>
+<tr class="odd">
+<td align="left">ynj2-r877</td>
+<td align="left">Hospitals</td>
+<td align="left">Complications and Deaths - Hospital</td>
+<td align="left">Complications and deaths - provider data. This data set includes provider-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
+<td align="left">2020-12-10</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/1818d71cb5d94636b87ed8459af818d6_1641873920/Complications_and_Deaths-Hospital.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/1818d71cb5d94636b87ed8459af818d6_1641873920/Complications_and_Deaths-Hospital.csv</a></td>
+</tr>
+<tr class="even">
+<td align="left">qqw3-t4ie</td>
+<td align="left">Hospitals</td>
+<td align="left">Complications and Deaths - National</td>
+<td align="left">Complications and deaths - national data. This data set includes national-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
+<td align="left">2020-12-10</td>
+<td align="left">2022-01-07</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/38113f000450f4087877f618fc6441a6_1641873921/Complications_and_Deaths-National.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/38113f000450f4087877f618fc6441a6_1641873921/Complications_and_Deaths-National.csv</a></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Import the data for a given dataset</span>
+<span class="fu"><a href="reference/read_cms.html">read_cms</a></span><span class="op">(</span>
+  datasetid <span class="op">=</span> <span class="st">"ynj2-r877"</span>
+<span class="op">)</span>
+<span class="co">#&gt; Rows: 92112 Columns: 18</span>
+<span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; Delimiter: ","</span>
+<span class="co">#&gt; chr (17): Facility ID, Facility Name, Address, City, State, ZIP Code, County...</span>
+<span class="co">#&gt; dbl  (1): Footnote</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
+<span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
+<span class="co">#&gt; # A tibble: 92,112 × 18</span>
+<span class="co">#&gt;    `Facility ID` `Facility Name`    Address City  State `ZIP Code` `County Name`</span>
+<span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;        </span>
+<span class="co">#&gt;  1 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  2 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  3 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  4 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  5 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  6 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  7 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  8 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt;  9 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt; 10 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
+<span class="co">#&gt; # … with 92,102 more rows, and 11 more variables: `Phone Number` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Measure ID` &lt;chr&gt;, `Measure Name` &lt;chr&gt;, `Compared to National` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Denominator &lt;chr&gt;, Score &lt;chr&gt;, `Lower Estimate` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Higher Estimate` &lt;chr&gt;, Footnote &lt;dbl&gt;, `Start Date` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `End Date` &lt;chr&gt;</span></code></pre></div>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/zajichek/carecompare/">https://​github.com/​zajichek/​carecompare/​</a>
-</li>
+<li><a href="https://github.com/zajichek/carecompare/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing carecompare</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Alex Zajichek <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=carecompare"><img src="https://www.r-pkg.org/badges/version/carecompare" alt="CRAN Status"></a></li>
+<li><a href="https://cran.r-project.org/package=carecompare" class="external-link"><img src="https://www.r-pkg.org/badges/version/carecompare" alt="CRAN Status"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Alex Zajichek.</p>
+  <p></p>
+<p>Developed by Alex Zajichek.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -126,6 +272,8 @@
 
   
 
+
+  
 
   </body>
 </html>
