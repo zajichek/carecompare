@@ -25,10 +25,16 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/list_datasets.html</loc>
+  </url>
+  <url>
     <loc>/reference/pipe.html</loc>
   </url>
   <url>
     <loc>/reference/read_cms.html</loc>
+  </url>
+  <url>
+    <loc>/reference/show_topics.html</loc>
   </url>
   <url>
     <loc>/reference/topics.html</loc>

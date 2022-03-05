@@ -1,11 +1,11 @@
-\name{datasets}
-\alias{datasets}
+\name{list_datasets}
+\alias{list_datasets}
 \title{Extract dataset information}
 \description{
 Obtains metadata for the datasets in the supplied topics, including dataset identifiers, titles, descriptions, dates, and URLs.
 }
 \usage{
-datasets(
+list_datasets(
   topics = NULL
 )
 }
@@ -17,5 +17,5 @@ A \code{tibble::tibble}
 }
 \author{Alex Zajichek}
 \examples{
-datasets("Hospitals")
+list_datasets("Hospitals")
 }  

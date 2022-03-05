@@ -3,9 +3,9 @@
 # Project: carecompare
 # Description: Package function definitions
 
-# Name: topics
+# Name: show_topics
 # Description: Returns the collection of topics data is available for
-topics <-
+show_topics <-
   function() {
     
     # URL to query
@@ -29,22 +29,21 @@ topics <-
 
 # Name: datasets
 # Description: Returns information on available datasets for a given topic
-datasets <-
+list_datasets <-
   function(
     topics = NULL # Collection of topics to return dataset information for; returns all if left NULL
   ) {
     
     # Check for input topics
-    these_topics <- topics
-    if(is.null(these_topics))
-      these_topics <- topics()
+    if(is.null(topics))
+      topics <- show_topics()
     
     # Iterate to import metadata
     dataset_list <- list()
-    for(i in seq_along(these_topics)) {
+    for(i in seq_along(topics)) {
       
       # Extract this topic
-      this_topic <- these_topics[i]
+      this_topic <- topics[i]
       
       # Make the url
       url <- paste0("https://data.cms.gov/provider-data/api/1/search?sort=title&page=1&page-size=100&sort-order=asc&facets=0&theme=", stringr::str_replace_all(this_topic, " ", "%20"))

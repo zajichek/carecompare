@@ -30,18 +30,26 @@ The `carecompare` package contains tools for accessing, exploring and analyzing 
 require(carecompare)
 
 # Extract the topics
-topics <- topics()
+topics <- show_topics()
 topics
 
 # Examine the metadata for a given topic
-hospitals <- datasets("Hospitals")
+hospitals <- list_datasets("Hospitals")
+hospitals 
+
+# Search for a dataset
 hospitals %>% 
-  head() %>%
+  dplyr::filter(
+    title %>%
+      stringr::str_detect(
+        pattern = "(?i)readmission"
+      )
+  ) %>%
   knitr::kable(format = "pandoc")
 
 # Import the data for a given dataset
 read_cms(
-  datasetid = "ynj2-r877"
+  datasetid = "9n3s-kdb3"
 )
 ```
 

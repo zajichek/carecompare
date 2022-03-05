@@ -84,7 +84,7 @@
 <span class="co">#&gt; Loading required package: carecompare</span>
 
 <span class="co"># Extract the topics</span>
-<span class="va">topics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/topics.html">topics</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">topics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/show_topics.html">show_topics</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">topics</span>
 <span class="co">#&gt;  [1] "Helpful Contacts"                      </span>
 <span class="co">#&gt;  [2] "Dialysis facilities"                   </span>
@@ -100,19 +100,41 @@
 <span class="co">#&gt; [12] "Medicare plan finder"</span>
 
 <span class="co"># Examine the metadata for a given topic</span>
-<span class="va">hospitals</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/datasets.html">datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
+<span class="va">hospitals</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
+<span class="va">hospitals</span> 
+<span class="co">#&gt; # A tibble: 68 × 7</span>
+<span class="co">#&gt;    datasetid topic     title       description issued     modified   downloadurl</span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 4jcv-atw7 Hospitals Ambulatory… A list of … 2022-01-07 2022-01-07 https://da…</span>
+<span class="co">#&gt;  2 axe7-s95e Hospitals Ambulatory… This file … 2022-01-07 2022-01-07 https://da…</span>
+<span class="co">#&gt;  3 wue8-3vwe Hospitals Ambulatory… This file … 2022-01-07 2022-01-07 https://da…</span>
+<span class="co">#&gt;  4 muwa-iene Hospitals CMS Medica… This data … 2020-12-10 2022-01-07 https://da…</span>
+<span class="co">#&gt;  5 ynj2-r877 Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…</span>
+<span class="co">#&gt;  6 qqw3-t4ie Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…</span>
+<span class="co">#&gt;  7 bs2r-24vh Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…</span>
+<span class="co">#&gt;  8 tqkv-mgxq Hospitals Comprehens… Comprehens… 2020-12-10 2021-06-15 https://da…</span>
+<span class="co">#&gt;  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-01-07 https://da…</span>
+<span class="co">#&gt; 10 y9us-9xdf Hospitals Footnote C… The footno… 2020-12-10 2021-09-22 https://da…</span>
+<span class="co">#&gt; # … with 58 more rows</span>
+
+<span class="co"># Search for a dataset</span>
 <span class="va">hospitals</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span>
+    <span class="va">title</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
+      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span>
+        pattern <span class="op">=</span> <span class="st">"(?i)readmission"</span>
+      <span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span>format <span class="op">=</span> <span class="st">"pandoc"</span><span class="op">)</span></code></pre></div>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
 <col width="1%">
 <col width="1%">
-<col width="7%">
-<col width="71%">
+<col width="5%">
+<col width="67%">
 <col width="1%">
 <col width="1%">
-<col width="15%">
+<col width="21%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">datasetid</th>
@@ -123,94 +145,46 @@
 <th align="left">modified</th>
 <th align="left">downloadurl</th>
 </tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">4jcv-atw7</td>
+<tbody><tr class="odd">
+<td align="left">9n3s-kdb3</td>
 <td align="left">Hospitals</td>
-<td align="left">Ambulatory Surgical Center Quality Measures - Facility</td>
-<td align="left">A list of ambulatory surgical centers participating in the Ambulatory Surgical Center Quality Reporting (ASCQR) Program and their performance rates for calendar years 2019 and 2020.</td>
-<td align="left">2022-01-07</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/9f2d12e524d9ab36a0046ce25d6ac22a_1641873914/ASC_Facility.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/9f2d12e524d9ab36a0046ce25d6ac22a_1641873914/ASC_Facility.csv</a></td>
-</tr>
-<tr class="even">
-<td align="left">axe7-s95e</td>
-<td align="left">Hospitals</td>
-<td align="left">Ambulatory Surgical Center Quality Measures - State</td>
-<td align="left">This file contains state-level data for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.</td>
-<td align="left">2022-01-07</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/8fcad48fb47852d29549b98e93b9b178_1641873917/ASC_State.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/8fcad48fb47852d29549b98e93b9b178_1641873917/ASC_State.csv</a></td>
-</tr>
-<tr class="odd">
-<td align="left">wue8-3vwe</td>
-<td align="left">Hospitals</td>
-<td align="left">Ambulatory Surgical Center Quality Measures - National</td>
-<td align="left">This file contains the national averages for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.</td>
-<td align="left">2022-01-07</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/eeab0bd6ff1f6704bd1febeeb7281b5f_1641873915/ASC_National.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/eeab0bd6ff1f6704bd1febeeb7281b5f_1641873915/ASC_National.csv</a></td>
-</tr>
-<tr class="even">
-<td align="left">muwa-iene</td>
-<td align="left">Hospitals</td>
-<td align="left">CMS Medicare PSI-90 and component measures - six-digit estimate dataset</td>
-<td align="left">This data set includes the Patient Safety and Adverse Events Composite measure (CMS Medicare PSI 90) and the individual CMS Patient Safety Indicators. CMS Medicare PSI 90 is a composite complication measure composed from 10 separate Patient Safety Indicators. The measure provides an overview of hospital-level quality as it relates to a set of potentially preventable hospital-related events associated with harmful outcomes for patients. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
+<td align="left">Hospital Readmissions Reduction Program</td>
+<td align="left">In October 2012, CMS began reducing Medicare payments for subsection(d) hospitals with excess readmissions under the Hospital Readmissions Reduction Program (HRRP). Excess readmissions are measured by a ratio, calculated by dividing a hospital’s predicted rate of readmissions for heart attack (AMI), heart failure (HF), pneumonia, chronic obstructive pulmonary disease (COPD), hip/knee replacement (THA/TKA), and coronary artery bypass graft surgery (CABG) by the expected rate of readmissions, based on an average hospital with similar patients.</td>
 <td align="left">2020-12-10</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/06f0a6eff78f06b8bee4b4bf4a1f20a2_1641873919/CMS_PSI_6_decimal_file.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/06f0a6eff78f06b8bee4b4bf4a1f20a2_1641873919/CMS_PSI_6_decimal_file.csv</a></td>
-</tr>
-<tr class="odd">
-<td align="left">ynj2-r877</td>
-<td align="left">Hospitals</td>
-<td align="left">Complications and Deaths - Hospital</td>
-<td align="left">Complications and deaths - provider data. This data set includes provider-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
-<td align="left">2020-12-10</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/1818d71cb5d94636b87ed8459af818d6_1641873920/Complications_and_Deaths-Hospital.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/1818d71cb5d94636b87ed8459af818d6_1641873920/Complications_and_Deaths-Hospital.csv</a></td>
-</tr>
-<tr class="even">
-<td align="left">qqw3-t4ie</td>
-<td align="left">Hospitals</td>
-<td align="left">Complications and Deaths - National</td>
-<td align="left">Complications and deaths - national data. This data set includes national-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <a href="https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf" class="external-link uri">https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf</a>.</td>
-<td align="left">2020-12-10</td>
-<td align="left">2022-01-07</td>
-<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/38113f000450f4087877f618fc6441a6_1641873921/Complications_and_Deaths-National.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/38113f000450f4087877f618fc6441a6_1641873921/Complications_and_Deaths-National.csv</a></td>
-</tr>
-</tbody>
+<td align="left">2022-01-19</td>
+<td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv</a></td>
+</tr></tbody>
 </table>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Import the data for a given dataset</span>
 <span class="fu"><a href="reference/read_cms.html">read_cms</a></span><span class="op">(</span>
-  datasetid <span class="op">=</span> <span class="st">"ynj2-r877"</span>
+  datasetid <span class="op">=</span> <span class="st">"9n3s-kdb3"</span>
 <span class="op">)</span>
-<span class="co">#&gt; Rows: 92112 Columns: 18</span>
+<span class="co">#&gt; Rows: 19020 Columns: 12</span>
 <span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Delimiter: ","</span>
-<span class="co">#&gt; chr (17): Facility ID, Facility Name, Address, City, State, ZIP Code, County...</span>
+<span class="co">#&gt; chr (11): Facility Name, Facility ID, State, Measure Name, Number of Dischar...</span>
 <span class="co">#&gt; dbl  (1): Footnote</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="co">#&gt; # A tibble: 92,112 × 18</span>
-<span class="co">#&gt;    `Facility ID` `Facility Name`    Address City  State `ZIP Code` `County Name`</span>
-<span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  2 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  3 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  4 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  5 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  6 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  7 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  8 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt;  9 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt; 10 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      </span>
-<span class="co">#&gt; # … with 92,102 more rows, and 11 more variables: `Phone Number` &lt;chr&gt;,</span>
-<span class="co">#&gt; #   `Measure ID` &lt;chr&gt;, `Measure Name` &lt;chr&gt;, `Compared to National` &lt;chr&gt;,</span>
-<span class="co">#&gt; #   Denominator &lt;chr&gt;, Score &lt;chr&gt;, `Lower Estimate` &lt;chr&gt;,</span>
-<span class="co">#&gt; #   `Higher Estimate` &lt;chr&gt;, Footnote &lt;dbl&gt;, `Start Date` &lt;chr&gt;,</span>
-<span class="co">#&gt; #   `End Date` &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 19,020 × 12</span>
+<span class="co">#&gt;    `Facility Name`  `Facility ID` State `Measure Name` `Number of Dis…` Footnote</span>
+<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;               &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 SOUTHEAST HEALT… 010001        AL    READM-30-HIP-… 165                    NA</span>
+<span class="co">#&gt;  2 SOUTHEAST HEALT… 010001        AL    READM-30-CABG… 193                    NA</span>
+<span class="co">#&gt;  3 SOUTHEAST HEALT… 010001        AL    READM-30-AMI-… 424                    NA</span>
+<span class="co">#&gt;  4 SOUTHEAST HEALT… 010001        AL    READM-30-HF-H… 905                    NA</span>
+<span class="co">#&gt;  5 SOUTHEAST HEALT… 010001        AL    READM-30-COPD… 310                    NA</span>
+<span class="co">#&gt;  6 SOUTHEAST HEALT… 010001        AL    READM-30-PN-H… 504                    NA</span>
+<span class="co">#&gt;  7 MARSHALL MEDICA… 010005        AL    READM-30-COPD… 378                    NA</span>
+<span class="co">#&gt;  8 MARSHALL MEDICA… 010005        AL    READM-30-AMI-… N/A                    NA</span>
+<span class="co">#&gt;  9 MARSHALL MEDICA… 010005        AL    READM-30-HF-H… 223                    NA</span>
+<span class="co">#&gt; 10 MARSHALL MEDICA… 010005        AL    READM-30-CABG… N/A                     5</span>
+<span class="co">#&gt; # … with 19,010 more rows, and 6 more variables:</span>
+<span class="co">#&gt; #   `Excess Readmission Ratio` &lt;chr&gt;, `Predicted Readmission Rate` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Expected Readmission Rate` &lt;chr&gt;, `Number of Readmissions` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Start Date` &lt;chr&gt;, `End Date` &lt;chr&gt;</span></code></pre></div>
 </div>
 
   </div>

@@ -3,6 +3,6 @@ importFrom("rlang", ".data")
 importFrom("tibble", "tibble")
 
 export("%>%",
-       "topics",
-       "datasets",
+       "show_topics",
+       "list_datasets",
        "read_cms")

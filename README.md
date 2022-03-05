@@ -24,7 +24,7 @@ require(carecompare)
 #> Loading required package: carecompare
 
 # Extract the topics
-topics <- topics()
+topics <- show_topics()
 topics
 #>  [1] "Helpful Contacts"                      
 #>  [2] "Dialysis facilities"                   
@@ -40,50 +40,66 @@ topics
 #> [12] "Medicare plan finder"
 
 # Examine the metadata for a given topic
-hospitals <- datasets("Hospitals")
+hospitals <- list_datasets("Hospitals")
+hospitals 
+#> # A tibble: 68 × 7
+#>    datasetid topic     title       description issued     modified   downloadurl
+#>    <chr>     <chr>     <chr>       <chr>       <date>     <date>     <chr>      
+#>  1 4jcv-atw7 Hospitals Ambulatory… A list of … 2022-01-07 2022-01-07 https://da…
+#>  2 axe7-s95e Hospitals Ambulatory… This file … 2022-01-07 2022-01-07 https://da…
+#>  3 wue8-3vwe Hospitals Ambulatory… This file … 2022-01-07 2022-01-07 https://da…
+#>  4 muwa-iene Hospitals CMS Medica… This data … 2020-12-10 2022-01-07 https://da…
+#>  5 ynj2-r877 Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…
+#>  6 qqw3-t4ie Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…
+#>  7 bs2r-24vh Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…
+#>  8 tqkv-mgxq Hospitals Comprehens… Comprehens… 2020-12-10 2021-06-15 https://da…
+#>  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-01-07 https://da…
+#> 10 y9us-9xdf Hospitals Footnote C… The footno… 2020-12-10 2021-09-22 https://da…
+#> # … with 58 more rows
+
+# Search for a dataset
 hospitals %>% 
-  head() %>%
+  dplyr::filter(
+    title %>%
+      stringr::str_detect(
+        pattern = "(?i)readmission"
+      )
+  ) %>%
   knitr::kable(format = "pandoc")
 ```
 
-| datasetid | topic     | title                                                                   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | issued     | modified   | downloadurl                                                                                                                                          |
-|:----------|:----------|:------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:-----------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| 4jcv-atw7 | Hospitals | Ambulatory Surgical Center Quality Measures - Facility                  | A list of ambulatory surgical centers participating in the Ambulatory Surgical Center Quality Reporting (ASCQR) Program and their performance rates for calendar years 2019 and 2020.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 2022-01-07 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/9f2d12e524d9ab36a0046ce25d6ac22a_1641873914/ASC_Facility.csv>                      |
-| axe7-s95e | Hospitals | Ambulatory Surgical Center Quality Measures - State                     | This file contains state-level data for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 2022-01-07 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/8fcad48fb47852d29549b98e93b9b178_1641873917/ASC_State.csv>                         |
-| wue8-3vwe | Hospitals | Ambulatory Surgical Center Quality Measures - National                  | This file contains the national averages for all measures reported through the Ambulatory Surgical Center Quality Reporting Program for calendar years 2019 and 2020.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 2022-01-07 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/eeab0bd6ff1f6704bd1febeeb7281b5f_1641873915/ASC_National.csv>                      |
-| muwa-iene | Hospitals | CMS Medicare PSI-90 and component measures - six-digit estimate dataset | This data set includes the Patient Safety and Adverse Events Composite measure (CMS Medicare PSI 90) and the individual CMS Patient Safety Indicators. CMS Medicare PSI 90 is a composite complication measure composed from 10 separate Patient Safety Indicators. The measure provides an overview of hospital-level quality as it relates to a set of potentially preventable hospital-related events associated with harmful outcomes for patients. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf>. | 2020-12-10 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/06f0a6eff78f06b8bee4b4bf4a1f20a2_1641873919/CMS_PSI_6_decimal_file.csv>            |
-| ynj2-r877 | Hospitals | Complications and Deaths - Hospital                                     | Complications and deaths - provider data. This data set includes provider-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf>.                                                                                                                                                                                                                                                                  | 2020-12-10 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/1818d71cb5d94636b87ed8459af818d6_1641873920/Complications_and_Deaths-Hospital.csv> |
-| qqw3-t4ie | Hospitals | Complications and Deaths - National                                     | Complications and deaths - national data. This data set includes national-level data for the hip/knee complication measure, the CMS Patient Safety Indicators, and 30-day death rates. NOTICE: Data from the 1st and 2nd quarters of 2020 are not being reported due to the impact of the COVID-19 pandemic. For more information, please reference <https://qualitynet.cms.gov/files/5fb838aef61c410025a64709?filename=2020-111-IP.pdf>.                                                                                                                                                                                                                                                                  | 2020-12-10 | 2022-01-07 | <https://data.cms.gov/provider-data/sites/default/files/resources/38113f000450f4087877f618fc6441a6_1641873921/Complications_and_Deaths-National.csv> |
+| datasetid | topic     | title                                   | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | issued     | modified   | downloadurl                                                                                                                                                                 |
+|:----------|:----------|:----------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 9n3s-kdb3 | Hospitals | Hospital Readmissions Reduction Program | In October 2012, CMS began reducing Medicare payments for subsection(d) hospitals with excess readmissions under the Hospital Readmissions Reduction Program (HRRP). Excess readmissions are measured by a ratio, calculated by dividing a hospital’s predicted rate of readmissions for heart attack (AMI), heart failure (HF), pneumonia, chronic obstructive pulmonary disease (COPD), hip/knee replacement (THA/TKA), and coronary artery bypass graft surgery (CABG) by the expected rate of readmissions, based on an average hospital with similar patients. | 2020-12-10 | 2022-01-19 | <https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv> |
 
 ``` r
 # Import the data for a given dataset
 read_cms(
-  datasetid = "ynj2-r877"
+  datasetid = "9n3s-kdb3"
 )
-#> Rows: 92112 Columns: 18
+#> Rows: 19020 Columns: 12
 #> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ","
-#> chr (17): Facility ID, Facility Name, Address, City, State, ZIP Code, County...
+#> chr (11): Facility Name, Facility ID, State, Measure Name, Number of Dischar...
 #> dbl  (1): Footnote
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-#> # A tibble: 92,112 × 18
-#>    `Facility ID` `Facility Name`    Address City  State `ZIP Code` `County Name`
-#>    <chr>         <chr>              <chr>   <chr> <chr> <chr>      <chr>        
-#>  1 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  2 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  3 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  4 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  5 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  6 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  7 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  8 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#>  9 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#> 10 010001        SOUTHEAST HEALTH … 1108 R… DOTH… AL    36301      HOUSTON      
-#> # … with 92,102 more rows, and 11 more variables: `Phone Number` <chr>,
-#> #   `Measure ID` <chr>, `Measure Name` <chr>, `Compared to National` <chr>,
-#> #   Denominator <chr>, Score <chr>, `Lower Estimate` <chr>,
-#> #   `Higher Estimate` <chr>, Footnote <dbl>, `Start Date` <chr>,
-#> #   `End Date` <chr>
+#> # A tibble: 19,020 × 12
+#>    `Facility Name`  `Facility ID` State `Measure Name` `Number of Dis…` Footnote
+#>    <chr>            <chr>         <chr> <chr>          <chr>               <dbl>
+#>  1 SOUTHEAST HEALT… 010001        AL    READM-30-HIP-… 165                    NA
+#>  2 SOUTHEAST HEALT… 010001        AL    READM-30-CABG… 193                    NA
+#>  3 SOUTHEAST HEALT… 010001        AL    READM-30-AMI-… 424                    NA
+#>  4 SOUTHEAST HEALT… 010001        AL    READM-30-HF-H… 905                    NA
+#>  5 SOUTHEAST HEALT… 010001        AL    READM-30-COPD… 310                    NA
+#>  6 SOUTHEAST HEALT… 010001        AL    READM-30-PN-H… 504                    NA
+#>  7 MARSHALL MEDICA… 010005        AL    READM-30-COPD… 378                    NA
+#>  8 MARSHALL MEDICA… 010005        AL    READM-30-AMI-… N/A                    NA
+#>  9 MARSHALL MEDICA… 010005        AL    READM-30-HF-H… 223                    NA
+#> 10 MARSHALL MEDICA… 010005        AL    READM-30-CABG… N/A                     5
+#> # … with 19,010 more rows, and 6 more variables:
+#> #   `Excess Readmission Ratio` <chr>, `Predicted Readmission Rate` <chr>,
+#> #   `Expected Readmission Rate` <chr>, `Number of Readmissions` <chr>,
+#> #   `Start Date` <chr>, `End Date` <chr>
 ```
