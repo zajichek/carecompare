@@ -11,7 +11,14 @@ show_topics <-
     # URL to query
     url <- "https://data.cms.gov/provider-data/api/1/search?fulltext=theme&page=1&page-size=20&sort-order=desc&facets=theme"
     
-    # Request results, extract contents 
+    # Request results
+    request <- httr::GET(url)
+    
+    # Check for success
+    if(request$status_code != 200)
+      stop("Request did not return a successful status code.")
+    
+    # Extract the content
     request <- httr::content(httr::GET(url))
     
     # Extract needed components
