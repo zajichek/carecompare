@@ -23,11 +23,25 @@ knitr::opts_chunk$set(
 *__Currently in development__*
 
 # Introduction
-The `carecompare` package contains tools for accessing, exploring and analyzing the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/)
+The `carecompare` package is an `R` toolkit built to enable US hospitals and health systems to access, explore, and analyze performance in [quality measures and payment programs](https://qualitynet.cms.gov/) from the [_Centers for Medicare and Medicaid Services_](https://www.cms.gov/) _(CMS)_.
+
+## Installation
+
+* From source
+
+`devtools::install_github("zajichek/carecompare")`
+
+## Load
 
 ```{r}
-# Load the package
 require(carecompare)
+```
+
+# Accessing Data
+
+* Generic access to the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/).
+
+```{r}
 
 # Extract the topics
 topics <- show_topics()

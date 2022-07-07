@@ -14,15 +14,31 @@ Status](https://www.r-pkg.org/badges/version/carecompare)](https://cran.r-projec
 
 # Introduction
 
-The `carecompare` package contains tools for accessing, exploring and
-analyzing the [CMS Provider Data
-Catalog](https://data.cms.gov/provider-data/)
+The `carecompare` package is an `R` toolkit built to enable US hospitals
+and health systems to access, explore, and analyze performance in
+[quality measures and payment programs](https://qualitynet.cms.gov/)
+from the [*Centers for Medicare and Medicaid
+Services*](https://www.cms.gov/) *(CMS)*.
+
+## Installation
+
+-   From source
+
+`devtools::install_github("zajichek/carecompare")`
+
+## Load
 
 ``` r
-# Load the package
 require(carecompare)
 #> Loading required package: carecompare
+```
 
+# Accessing Data
+
+-   Generic access to the [CMS Provider Data
+    Catalog](https://data.cms.gov/provider-data/).
+
+``` r
 # Extract the topics
 topics <- show_topics()
 topics
@@ -53,7 +69,7 @@ hospitals
 #>  6 qqw3-t4ie Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…
 #>  7 bs2r-24vh Hospitals Complicati… Complicati… 2020-12-10 2022-01-07 https://da…
 #>  8 tqkv-mgxq Hospitals Comprehens… Comprehens… 2020-12-10 2021-06-15 https://da…
-#>  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-01-07 https://da…
+#>  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-03-21 https://da…
 #> 10 y9us-9xdf Hospitals Footnote C… The footno… 2020-12-10 2021-09-22 https://da…
 #> # … with 58 more rows
 
