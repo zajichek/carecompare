@@ -39,8 +39,9 @@ require(carecompare)
     Catalog](https://data.cms.gov/provider-data/).
 
 ``` r
+
 # Extract the topics
-topics <- show_topics()
+topics <- pdc_topics()
 topics
 #>  [1] "Helpful Contacts"                      
 #>  [2] "Dialysis facilities"                   
@@ -56,8 +57,8 @@ topics
 #> [12] "Medicare plan finder"
 
 # Examine the metadata for a given topic
-hospitals <- list_datasets("Hospitals")
-hospitals 
+hospital_data <- pdc_datasets("Hospitals")
+hospital_data
 #> # A tibble: 68 × 7
 #>    datasetid topic     title       description issued     modified   downloadurl
 #>    <chr>     <chr>     <chr>       <chr>       <date>     <date>     <chr>      
@@ -74,7 +75,7 @@ hospitals
 #> # … with 58 more rows
 
 # Search for a dataset
-hospitals %>% 
+hospital_data %>% 
   dplyr::filter(
     title %>%
       stringr::str_detect(
@@ -89,8 +90,9 @@ hospitals %>%
 | 9n3s-kdb3 | Hospitals | Hospital Readmissions Reduction Program | In October 2012, CMS began reducing Medicare payments for subsection(d) hospitals with excess readmissions under the Hospital Readmissions Reduction Program (HRRP). Excess readmissions are measured by a ratio, calculated by dividing a hospital’s predicted rate of readmissions for heart attack (AMI), heart failure (HF), pneumonia, chronic obstructive pulmonary disease (COPD), hip/knee replacement (THA/TKA), and coronary artery bypass graft surgery (CABG) by the expected rate of readmissions, based on an average hospital with similar patients. | 2020-12-10 | 2022-01-19 | <https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv> |
 
 ``` r
+
 # Import the data for a given dataset
-read_cms(
+pdc_read(
   datasetid = "9n3s-kdb3"
 )
 #> Rows: 19020 Columns: 12

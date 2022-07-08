@@ -44,15 +44,15 @@ require(carecompare)
 ```{r}
 
 # Extract the topics
-topics <- show_topics()
+topics <- pdc_topics()
 topics
 
 # Examine the metadata for a given topic
-hospitals <- list_datasets("Hospitals")
-hospitals 
+hospital_data <- pdc_datasets("Hospitals")
+hospital_data
 
 # Search for a dataset
-hospitals %>% 
+hospital_data %>% 
   dplyr::filter(
     title %>%
       stringr::str_detect(
@@ -62,7 +62,7 @@ hospitals %>%
   knitr::kable(format = "pandoc")
 
 # Import the data for a given dataset
-read_cms(
+pdc_read(
   datasetid = "9n3s-kdb3"
 )
 ```

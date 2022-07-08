@@ -1,11 +1,11 @@
-\name{show_topics}
-\alias{show_topics}
-\title{Extract available dataset topics}
+\name{pdc_topics}
+\alias{pdc_topics}
+\title{Extract available dataset topics from the CMS Provider Data Catalog}
 \description{
 Extracts the topic names in which data sets are available (see \link{https://data.cms.gov/provider-data/topics}).
 }
 \usage{
-show_topics()
+pdc_topics()
 }
 \value{
 A character vector

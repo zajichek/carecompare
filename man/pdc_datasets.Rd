@@ -1,11 +1,11 @@
-\name{list_datasets}
-\alias{list_datasets}
-\title{Extract dataset information}
+\name{pdc_datasets}
+\alias{pdc_datasets}
+\title{Extract dataset information from the CMS Provider Data Catalog}
 \description{
 Obtains metadata for the datasets in the supplied topics, including dataset identifiers, titles, descriptions, dates, and URLs.
 }
 \usage{
-list_datasets(
+pdc_datasets(
   topics = NULL
 )
 }
@@ -17,5 +17,5 @@ A \code{tibble::tibble}
 }
 \author{Alex Zajichek}
 \examples{
-list_datasets("Hospitals")
+pdc_datasets("Hospitals")
 }  

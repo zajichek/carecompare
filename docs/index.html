@@ -77,7 +77,11 @@
 <div class="section level1">
 <h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h1>
-<p>The <code>carecompare</code> package is an <code>R</code> toolkit built to enable US hospitals and health systems to access, explore, and analyze performance in <a href="https://qualitynet.cms.gov/" class="external-link">quality measures and payment programs</a> from the <a href="https://www.cms.gov/" class="external-link"><em>Centers for Medicare and Medicaid Services</em></a> <em>(CMS)</em>.</p>
+<p>The <code>carecompare</code> package is an <code>R</code> toolkit
+built to enable US hospitals and health systems to access, explore, and
+analyze performance in <a href="https://qualitynet.cms.gov/" class="external-link">quality
+measures and payment programs</a> from the <a href="https://www.cms.gov/" class="external-link"><em>Centers for Medicare and Medicaid
+Services</em></a> <em>(CMS)</em>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -98,11 +102,13 @@
 <h1 id="accessing-data">Accessing Data<a class="anchor" aria-label="anchor" href="#accessing-data"></a>
 </h1>
 <ul>
-<li>Generic access to the <a href="https://data.cms.gov/provider-data/" class="external-link">CMS Provider Data Catalog</a>.</li>
+<li>Generic access to the <a href="https://data.cms.gov/provider-data/" class="external-link">CMS Provider Data
+Catalog</a>.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Extract the topics</span>
-<span class="va">topics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/show_topics.html">show_topics</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="co"># Extract the topics</span>
+<span class="va">topics</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pdc_topics.html">pdc_topics</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">topics</span>
 <span class="co">#&gt;  [1] "Helpful Contacts"                      </span>
 <span class="co">#&gt;  [2] "Dialysis facilities"                   </span>
@@ -118,8 +124,8 @@
 <span class="co">#&gt; [12] "Medicare plan finder"</span>
 
 <span class="co"># Examine the metadata for a given topic</span>
-<span class="va">hospitals</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
-<span class="va">hospitals</span> 
+<span class="va">hospital_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pdc_datasets.html">pdc_datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
+<span class="va">hospital_data</span>
 <span class="co">#&gt; # A tibble: 68 × 7</span>
 <span class="co">#&gt;    datasetid topic     title       description issued     modified   downloadurl</span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;      </span>
@@ -136,7 +142,7 @@
 <span class="co">#&gt; # … with 58 more rows</span>
 
 <span class="co"># Search for a dataset</span>
-<span class="va">hospitals</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
+<span class="va">hospital_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span>
     <span class="va">title</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span>
       <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span>
@@ -167,15 +173,24 @@
 <td align="left">9n3s-kdb3</td>
 <td align="left">Hospitals</td>
 <td align="left">Hospital Readmissions Reduction Program</td>
-<td align="left">In October 2012, CMS began reducing Medicare payments for subsection(d) hospitals with excess readmissions under the Hospital Readmissions Reduction Program (HRRP). Excess readmissions are measured by a ratio, calculated by dividing a hospital’s predicted rate of readmissions for heart attack (AMI), heart failure (HF), pneumonia, chronic obstructive pulmonary disease (COPD), hip/knee replacement (THA/TKA), and coronary artery bypass graft surgery (CABG) by the expected rate of readmissions, based on an average hospital with similar patients.</td>
+<td align="left">In October 2012, CMS began reducing Medicare payments
+for subsection(d) hospitals with excess readmissions under the Hospital
+Readmissions Reduction Program (HRRP). Excess readmissions are measured
+by a ratio, calculated by dividing a hospital’s predicted rate of
+readmissions for heart attack (AMI), heart failure (HF), pneumonia,
+chronic obstructive pulmonary disease (COPD), hip/knee replacement
+(THA/TKA), and coronary artery bypass graft surgery (CABG) by the
+expected rate of readmissions, based on an average hospital with similar
+patients.</td>
 <td align="left">2020-12-10</td>
 <td align="left">2022-01-19</td>
 <td align="left"><a href="https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv" class="external-link uri">https://data.cms.gov/provider-data/sites/default/files/resources/6862887588c0e2d720f0c821f6ed8e76_1642665920/FY_2022_Hospital_Readmissions_Reduction_Program_Hospital.csv</a></td>
 </tr></tbody>
 </table>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Import the data for a given dataset</span>
-<span class="fu"><a href="reference/read_cms.html">read_cms</a></span><span class="op">(</span>
+<code class="sourceCode R">
+<span class="co"># Import the data for a given dataset</span>
+<span class="fu"><a href="reference/pdc_read.html">pdc_read</a></span><span class="op">(</span>
   datasetid <span class="op">=</span> <span class="st">"9n3s-kdb3"</span>
 <span class="op">)</span>
 <span class="co">#&gt; Rows: 19020 Columns: 12</span>
@@ -256,7 +271,8 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer>

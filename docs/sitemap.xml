@@ -22,10 +22,22 @@
     <loc>/reference/datasets.html</loc>
   </url>
   <url>
+    <loc>/reference/hospitals.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/list_datasets.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pdc_datasets.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pdc_read.html</loc>
+  </url>
+  <url>
+    <loc>/reference/pdc_topics.html</loc>
   </url>
   <url>
     <loc>/reference/pipe.html</loc>

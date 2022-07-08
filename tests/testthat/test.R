@@ -8,6 +8,6 @@ test_that(
   desc = "The number of topics returned matches the number shown on https://data.cms.gov/provider-data/topics",
   code = 
     {
-      expect_equal(length(show_topics()), 12)
+      expect_equal(length(pdc_topics()), 12)
     }
 )

@@ -3,9 +3,11 @@
 # Project: carecompare
 # Description: Package function definitions
 
-# Name: show_topics
+### General Functions for the CMS Provider Data Catalog
+
+# Name: pdc_topics
 # Description: Returns the collection of topics data is available for
-show_topics <-
+pdc_topics <-
   function() {
     
     # URL to query
@@ -34,16 +36,16 @@ show_topics <-
     
   }
 
-# Name: datasets
+# Name: pdc_datasets
 # Description: Returns information on available datasets for a given topic
-list_datasets <-
+pdc_datasets <-
   function(
     topics = NULL # Collection of topics to return dataset information for; returns all if left NULL
   ) {
     
     # Check for input topics
     if(is.null(topics))
-      topics <- show_topics()
+      topics <- pdc_topics()
     
     # Iterate to import metadata
     dataset_list <- list()
@@ -92,33 +94,27 @@ list_datasets <-
     
   }
 
-# Name: read_cms
+# Name: pdc_read
 # Description: Imports the specified dataset
-read_cms <-
+pdc_read <-
   function(
     datasetid = NULL,
-    downloadurl = NULL,
     ...
   ) {
     
-    # Check for at least one input
-    if(is.null(datasetid) & is.null(downloadurl)) 
-      stop("Please specify at least one dataset identifier.")
+    # Check for input
+    if(is.null(datasetid)) 
+      stop("Please specify a dataset identifier.")
     
-    # If the download url is not supplied, find it
-    if(is.null(downloadurl)) {
-      
-      # Make the url
-      url <- paste0("https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/", datasetid, "?show-reference-ids=false")
-      
-      # Make the request, extract the content
-      request <- httr::content(httr::GET(url))
-      
-      # Update the variable
-      downloadurl <- request$distribution[[1]]$data$downloadURL
-      
-    }
+    # Make the url
+    url <- paste0("https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/", datasetid, "?show-reference-ids=false")
     
+    # Make the request, extract the content
+    request <- httr::content(httr::GET(url))
+    
+    # Update the variable
+    downloadurl <- request$distribution[[1]]$data$downloadURL
+
     # Import the dataset
     readr::read_csv(
       file = downloadurl,
