@@ -21,7 +21,7 @@ pdc_topics <-
       stop("Request did not return a successful status code.")
     
     # Extract the content
-    request <- httr::content(httr::GET(url))
+    request <- httr::content(request)
     
     # Extract needed components
     results <- request$facets

@@ -59,7 +59,7 @@ topics
 # Examine the metadata for a given topic
 hospital_data <- pdc_datasets("Hospitals")
 hospital_data
-#> # A tibble: 68 × 7
+#> # A tibble: 67 × 7
 #>    datasetid topic     title       description issued     modified   downloadurl
 #>    <chr>     <chr>     <chr>       <chr>       <date>     <date>     <chr>      
 #>  1 4jcv-atw7 Hospitals Ambulatory… A list of … 2022-01-07 2022-01-07 https://da…
@@ -72,7 +72,7 @@ hospital_data
 #>  8 tqkv-mgxq Hospitals Comprehens… Comprehens… 2020-12-10 2021-06-15 https://da…
 #>  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-03-21 https://da…
 #> 10 y9us-9xdf Hospitals Footnote C… The footno… 2020-12-10 2021-09-22 https://da…
-#> # … with 58 more rows
+#> # … with 57 more rows
 
 # Search for a dataset
 hospital_data %>% 
@@ -120,4 +120,55 @@ pdc_read(
 #> #   `Excess Readmission Ratio` <chr>, `Predicted Readmission Rate` <chr>,
 #> #   `Expected Readmission Rate` <chr>, `Number of Readmissions` <chr>,
 #> #   `Start Date` <chr>, `End Date` <chr>
+```
+
+-   Specialized data sets built into package
+
+``` r
+hospitals
+#> # A tibble: 5,306 × 15
+#>    HospitalID Name  Address City  State Zip   County Type  Ownership FullAddress
+#>    <chr>      <chr> <chr>   <chr> <chr> <chr> <chr>  <chr> <chr>     <chr>      
+#>  1 010001     SOUT… 1108 R… DOTH… AL    36301 HOUST… Acut… Governme… 1108 ROSS …
+#>  2 010005     MARS… 2505 U… BOAZ  AL    35957 MARSH… Acut… Governme… 2505 U S H…
+#>  3 010006     NORT… 1701 V… FLOR… AL    35630 LAUDE… Acut… Propriet… 1701 VETER…
+#>  4 010007     MIZE… 702 N … OPP   AL    36467 COVIN… Acut… Voluntar… 702 N MAIN…
+#>  5 010008     CREN… 101 HO… LUVE… AL    36049 CRENS… Acut… Propriet… 101 HOSPIT…
+#>  6 010011     ST. … 50 MED… BIRM… AL    35235 JEFFE… Acut… Voluntar… 50 MEDICAL…
+#>  7 010012     DEKA… 200 ME… FORT… AL    35968 DE KA… Acut… Propriet… 200 MED CE…
+#>  8 010016     SHEL… 1000 F… ALAB… AL    35007 SHELBY Acut… Voluntar… 1000 FIRST…
+#>  9 010018     CALL… 1720 U… BIRM… AL    35233 JEFFE… Acut… Voluntar… 1720 UNIVE…
+#> 10 010019     HELE… 1300 S… SHEF… AL    35660 COLBE… Acut… Governme… 1300 SOUTH…
+#> # … with 5,296 more rows, and 5 more variables: CoveredCharges <dbl>,
+#> #   MedicarePayment <dbl>, TotalPayment <dbl>, Latitude <dbl>, Longitude <dbl>
+payments
+#> # A tibble: 188,806 × 6
+#>    HospitalID MSDRGCode Discharges AverageCoveredCharges AverageTotalPayment
+#>    <chr>      <chr>          <dbl>                 <dbl>               <dbl>
+#>  1 010001     003               14               326515.              62788.
+#>  2 010001     023               55               140875.              29767.
+#>  3 010001     024               20               109788.              22780.
+#>  4 010001     025               23               124579.              24107.
+#>  5 010001     027               16                75029.              18216.
+#>  6 010001     038               20                73875.               9721.
+#>  7 010001     039               45                47281.               6985.
+#>  8 010001     054               11                34797.               7782 
+#>  9 010001     056               15                66157.              11793.
+#> 10 010001     057               38                27677.               7393.
+#> # … with 188,796 more rows, and 1 more variable: AverageMedicarePayment <dbl>
+msdrg
+#> # A tibble: 767 × 7
+#>    MSDRGCode MSDRGDescription      MSDRGType MajorDiagnostic… Weight GMLOS AMLOS
+#>    <chr>     <chr>                 <chr>     <chr>             <dbl> <dbl> <dbl>
+#>  1 001       HEART TRANSPLANT OR … SURG      PRE               28.9   30.1  39.1
+#>  2 002       HEART TRANSPLANT OR … SURG      PRE               15.0   15.4  18.2
+#>  3 003       ECMO OR TRACHEOSTOMY… SURG      PRE               19.1   22.4  30.2
+#>  4 004       TRACHEOSTOMY WITH MV… SURG      PRE               11.9   20    24.6
+#>  5 005       LIVER TRANSPLANT WIT… SURG      PRE               10.2   14.4  19.4
+#>  6 006       LIVER TRANSPLANT WIT… SURG      PRE                4.70   7.5   8.1
+#>  7 007       LUNG TRANSPLANT       SURG      PRE               11.6   17.4  20.8
+#>  8 008       SIMULTANEOUS PANCREA… SURG      PRE                5.43   9    10.2
+#>  9 010       PANCREAS TRANSPLANT   SURG      PRE                3.62   8     9.1
+#> 10 011       TRACHEOSTOMY FOR FAC… SURG      PRE                5.02  10.9  13.8
+#> # … with 757 more rows
 ```

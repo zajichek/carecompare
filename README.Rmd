@@ -67,3 +67,11 @@ pdc_read(
 )
 ```
 
+* Specialized data sets built into package
+
+```{r}
+hospitals
+payments
+msdrg
+```
+

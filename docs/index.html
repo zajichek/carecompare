@@ -126,7 +126,7 @@ Catalog</a>.</li>
 <span class="co"># Examine the metadata for a given topic</span>
 <span class="va">hospital_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pdc_datasets.html">pdc_datasets</a></span><span class="op">(</span><span class="st">"Hospitals"</span><span class="op">)</span>
 <span class="va">hospital_data</span>
-<span class="co">#&gt; # A tibble: 68 × 7</span>
+<span class="co">#&gt; # A tibble: 67 × 7</span>
 <span class="co">#&gt;    datasetid topic     title       description issued     modified   downloadurl</span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;      </span>
 <span class="co">#&gt;  1 4jcv-atw7 Hospitals Ambulatory… A list of … 2022-01-07 2022-01-07 https://da…</span>
@@ -139,7 +139,7 @@ Catalog</a>.</li>
 <span class="co">#&gt;  8 tqkv-mgxq Hospitals Comprehens… Comprehens… 2020-12-10 2021-06-15 https://da…</span>
 <span class="co">#&gt;  9 bzsr-4my4 Hospitals Data Updat… Lists the … 2020-12-10 2022-03-21 https://da…</span>
 <span class="co">#&gt; 10 y9us-9xdf Hospitals Footnote C… The footno… 2020-12-10 2021-09-22 https://da…</span>
-<span class="co">#&gt; # … with 58 more rows</span>
+<span class="co">#&gt; # … with 57 more rows</span>
 
 <span class="co"># Search for a dataset</span>
 <span class="va">hospital_data</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
@@ -218,6 +218,56 @@ patients.</td>
 <span class="co">#&gt; #   `Excess Readmission Ratio` &lt;chr&gt;, `Predicted Readmission Rate` &lt;chr&gt;,</span>
 <span class="co">#&gt; #   `Expected Readmission Rate` &lt;chr&gt;, `Number of Readmissions` &lt;chr&gt;,</span>
 <span class="co">#&gt; #   `Start Date` &lt;chr&gt;, `End Date` &lt;chr&gt;</span></code></pre></div>
+<ul>
+<li>Specialized data sets built into package</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">hospitals</span>
+<span class="co">#&gt; # A tibble: 5,306 × 15</span>
+<span class="co">#&gt;    HospitalID Name  Address City  State Zip   County Type  Ownership FullAddress</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 010001     SOUT… 1108 R… DOTH… AL    36301 HOUST… Acut… Governme… 1108 ROSS …</span>
+<span class="co">#&gt;  2 010005     MARS… 2505 U… BOAZ  AL    35957 MARSH… Acut… Governme… 2505 U S H…</span>
+<span class="co">#&gt;  3 010006     NORT… 1701 V… FLOR… AL    35630 LAUDE… Acut… Propriet… 1701 VETER…</span>
+<span class="co">#&gt;  4 010007     MIZE… 702 N … OPP   AL    36467 COVIN… Acut… Voluntar… 702 N MAIN…</span>
+<span class="co">#&gt;  5 010008     CREN… 101 HO… LUVE… AL    36049 CRENS… Acut… Propriet… 101 HOSPIT…</span>
+<span class="co">#&gt;  6 010011     ST. … 50 MED… BIRM… AL    35235 JEFFE… Acut… Voluntar… 50 MEDICAL…</span>
+<span class="co">#&gt;  7 010012     DEKA… 200 ME… FORT… AL    35968 DE KA… Acut… Propriet… 200 MED CE…</span>
+<span class="co">#&gt;  8 010016     SHEL… 1000 F… ALAB… AL    35007 SHELBY Acut… Voluntar… 1000 FIRST…</span>
+<span class="co">#&gt;  9 010018     CALL… 1720 U… BIRM… AL    35233 JEFFE… Acut… Voluntar… 1720 UNIVE…</span>
+<span class="co">#&gt; 10 010019     HELE… 1300 S… SHEF… AL    35660 COLBE… Acut… Governme… 1300 SOUTH…</span>
+<span class="co">#&gt; # … with 5,296 more rows, and 5 more variables: CoveredCharges &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   MedicarePayment &lt;dbl&gt;, TotalPayment &lt;dbl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;</span>
+<span class="va">payments</span>
+<span class="co">#&gt; # A tibble: 188,806 × 6</span>
+<span class="co">#&gt;    HospitalID MSDRGCode Discharges AverageCoveredCharges AverageTotalPayment</span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;                 &lt;dbl&gt;               &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 010001     003               14               326515.              62788.</span>
+<span class="co">#&gt;  2 010001     023               55               140875.              29767.</span>
+<span class="co">#&gt;  3 010001     024               20               109788.              22780.</span>
+<span class="co">#&gt;  4 010001     025               23               124579.              24107.</span>
+<span class="co">#&gt;  5 010001     027               16                75029.              18216.</span>
+<span class="co">#&gt;  6 010001     038               20                73875.               9721.</span>
+<span class="co">#&gt;  7 010001     039               45                47281.               6985.</span>
+<span class="co">#&gt;  8 010001     054               11                34797.               7782 </span>
+<span class="co">#&gt;  9 010001     056               15                66157.              11793.</span>
+<span class="co">#&gt; 10 010001     057               38                27677.               7393.</span>
+<span class="co">#&gt; # … with 188,796 more rows, and 1 more variable: AverageMedicarePayment &lt;dbl&gt;</span>
+<span class="va">msdrg</span>
+<span class="co">#&gt; # A tibble: 767 × 7</span>
+<span class="co">#&gt;    MSDRGCode MSDRGDescription      MSDRGType MajorDiagnostic… Weight GMLOS AMLOS</span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                 &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 001       HEART TRANSPLANT OR … SURG      PRE               28.9   30.1  39.1</span>
+<span class="co">#&gt;  2 002       HEART TRANSPLANT OR … SURG      PRE               15.0   15.4  18.2</span>
+<span class="co">#&gt;  3 003       ECMO OR TRACHEOSTOMY… SURG      PRE               19.1   22.4  30.2</span>
+<span class="co">#&gt;  4 004       TRACHEOSTOMY WITH MV… SURG      PRE               11.9   20    24.6</span>
+<span class="co">#&gt;  5 005       LIVER TRANSPLANT WIT… SURG      PRE               10.2   14.4  19.4</span>
+<span class="co">#&gt;  6 006       LIVER TRANSPLANT WIT… SURG      PRE                4.70   7.5   8.1</span>
+<span class="co">#&gt;  7 007       LUNG TRANSPLANT       SURG      PRE               11.6   17.4  20.8</span>
+<span class="co">#&gt;  8 008       SIMULTANEOUS PANCREA… SURG      PRE                5.43   9    10.2</span>
+<span class="co">#&gt;  9 010       PANCREAS TRANSPLANT   SURG      PRE                3.62   8     9.1</span>
+<span class="co">#&gt; 10 011       TRACHEOSTOMY FOR FAC… SURG      PRE                5.02  10.9  13.8</span>
+<span class="co">#&gt; # … with 757 more rows</span></code></pre></div>
 </div>
 
   </div>
