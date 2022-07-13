@@ -1,9 +1,9 @@
 Package: carecompare
 Version: 0.0.1
 Date: 2022-03-02
-Title: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
+Title: Tools for accessing, exploring and analyzing CMS quality data
 Authors@R: person(given = "Alex", family = "Zajichek", email = "alexzajichek@gmail.com", role = c("aut", "cre"))
-Description: Tools for accessing, exploring and analyzing the CMS Provider Data Catalog
+Description: Toolkit to enable US hospitals and health systems to access, explore, and analyze performance in quality measures and payment programs from the Centers for Medicare and Medicaid Services (CMS).
 URL: https://zajichek.github.io/carecompare, https://github.com/zajichek/carecompare
 License: MIT + file LICENSE
 Depends: 

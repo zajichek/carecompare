@@ -2,3 +2,17 @@ destination: docs
 template:
   params:
     bootswatch: yeti
+
+reference:
+- title: CMS Provider Data Catalog
+  contents:
+  - pdc_topics
+  - pdc_datasets
+  - pdc_read
+  
+- title: CMS Datasets
+  contents:
+  - hospitals
+  - cms_msdrg
+  - cms_payments
+  

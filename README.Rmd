@@ -39,7 +39,7 @@ require(carecompare)
 
 # Accessing Data
 
-* Generic access to the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/).
+## Generic access to the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/).
 
 ```{r}
 
@@ -67,11 +67,11 @@ pdc_read(
 )
 ```
 
-* Specialized data sets built into package
+## Formatted datasets
 
 ```{r}
 hospitals
-payments
-msdrg
+cms_payments()
+cms_msdrg()
 ```
 

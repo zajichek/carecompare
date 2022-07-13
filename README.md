@@ -35,8 +35,7 @@ require(carecompare)
 
 # Accessing Data
 
--   Generic access to the [CMS Provider Data
-    Catalog](https://data.cms.gov/provider-data/).
+## Generic access to the [CMS Provider Data Catalog](https://data.cms.gov/provider-data/).
 
 ``` r
 
@@ -122,11 +121,11 @@ pdc_read(
 #> #   `Start Date` <chr>, `End Date` <chr>
 ```
 
--   Specialized data sets built into package
+## Formatted datasets
 
 ``` r
 hospitals
-#> # A tibble: 5,306 × 15
+#> # A tibble: 5,306 × 12
 #>    HospitalID Name  Address City  State Zip   County Type  Ownership FullAddress
 #>    <chr>      <chr> <chr>   <chr> <chr> <chr> <chr>  <chr> <chr>     <chr>      
 #>  1 010001     SOUT… 1108 R… DOTH… AL    36301 HOUST… Acut… Governme… 1108 ROSS …
@@ -139,9 +138,8 @@ hospitals
 #>  8 010016     SHEL… 1000 F… ALAB… AL    35007 SHELBY Acut… Voluntar… 1000 FIRST…
 #>  9 010018     CALL… 1720 U… BIRM… AL    35233 JEFFE… Acut… Voluntar… 1720 UNIVE…
 #> 10 010019     HELE… 1300 S… SHEF… AL    35660 COLBE… Acut… Governme… 1300 SOUTH…
-#> # … with 5,296 more rows, and 5 more variables: CoveredCharges <dbl>,
-#> #   MedicarePayment <dbl>, TotalPayment <dbl>, Latitude <dbl>, Longitude <dbl>
-payments
+#> # … with 5,296 more rows, and 2 more variables: Latitude <dbl>, Longitude <dbl>
+cms_payments()
 #> # A tibble: 188,806 × 6
 #>    HospitalID MSDRGCode Discharges AverageCoveredCharges AverageTotalPayment
 #>    <chr>      <chr>          <dbl>                 <dbl>               <dbl>
@@ -156,7 +154,15 @@ payments
 #>  9 010001     056               15                66157.              11793.
 #> 10 010001     057               38                27677.               7393.
 #> # … with 188,796 more rows, and 1 more variable: AverageMedicarePayment <dbl>
-msdrg
+cms_msdrg()
+#> Rows: 767 Columns: 9
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: "\t"
+#> chr (6): MS-DRG, FY 2022 Final Post-Acute DRG, FY 2022 Final Special Pay DRG...
+#> dbl (3): Weights, Geometric mean LOS, Arithmetic mean LOS
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #> # A tibble: 767 × 7
 #>    MSDRGCode MSDRGDescription      MSDRGType MajorDiagnostic… Weight GMLOS AMLOS
 #>    <chr>     <chr>                 <chr>     <chr>             <dbl> <dbl> <dbl>

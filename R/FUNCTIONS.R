@@ -122,3 +122,92 @@ pdc_read <-
     )
     
   }
+
+### Data Access Functions
+
+# Name: cms_msdrg
+# Description: Returns data frame of MSDRG weights and related information for most recent final rule
+  # - Current: FY2022
+cms_msdrg <-
+  function() {
+    
+    # Set zip file name
+    msdrg_zip <- "https://www.cms.gov/files/zip/fy2022-ipps-fr-table-5-fy-2022-ms-drgs-relative-weighting-factors-and-geometric-and-arithmetic-mean.zip"
+    
+    # Set data file name
+    msdrg_file <- "CMS-1752-F Table 5.txt"
+    
+    # Create a temporary file (Credits: rpubs.com/otienodominic/398952)
+    temp_file <- tempfile()
+    
+    # Download into the temporary file
+    download.file(msdrg_zip, temp_file)
+    
+    # Unzip, and place the file in the current working directory
+    unzip(temp_file, msdrg_file, exdir = ".")
+    
+    # Import the file
+    msdrg <-
+      readr::read_tsv(
+        file = msdrg_file,
+        skip = 1,
+        na = c("", " ", "NA", "**", ".")
+      ) %>%
+      
+      # Rename columns
+      dplyr::select(
+        MSDRGCode = `MS-DRG`,
+        MSDRGDescription = `MS-DRG Title`,
+        MSDRGType = TYPE,
+        MajorDiagnosticCategory = MDC,
+        Weight = Weights,
+        GMLOS = `Geometric mean LOS`,
+        AMLOS = `Arithmetic mean LOS`
+      )
+    
+    # Remove temporary file
+    file.remove(msdrg_file)
+    unlink(temp_file)
+
+    # Return dataset
+    msdrg
+    
+  }
+
+# Name: cms_payments
+# Description: Returns data frame of payments made to each hospital by MSDRG
+  # Current: 2019
+cms_payments <-
+  function() {
+    
+    # Payments file
+    payments_file <- "https://data.cms.gov/data-api/v1/dataset/3cb202ad-fd90-45eb-b12e-febaa57356fe/data.csv"
+    
+    # Import the file
+    payments <-
+      readr::read_csv(
+        file = payments_file,
+        col_types = 
+          list(
+            Tot_Dschrgs = readr::col_number(),
+            Avg_Submtd_Cvrd_Chrg = readr::col_number(),
+            Avg_Tot_Pymt_Amt = readr::col_number(),
+            Avg_Mdcr_Pymt_Amt = readr::col_number()
+          )
+      ) %>%
+      
+      # Select and rename columns
+      dplyr::transmute(
+        HospitalID = Rndrng_Prvdr_CCN,
+        MSDRGCode = DRG_Cd,
+        Discharges = Tot_Dschrgs,
+        AverageCoveredCharges = Avg_Submtd_Cvrd_Chrg,
+        AverageTotalPayment = Avg_Tot_Pymt_Amt,
+        AverageMedicarePayment = Avg_Mdcr_Pymt_Amt
+      )
+    
+    # Return dataset
+    payments
+    
+  }
+
